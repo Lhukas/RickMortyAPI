@@ -13,7 +13,7 @@ export class CharacterService {
   getCharacters() {
     const query = `
       query {
-        characters {
+        characters(page: 3) {
           results {
             id
             name
