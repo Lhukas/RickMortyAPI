@@ -1,0 +1,16 @@
+schema: https://rickandmortyapi.com/graphql
+documents: 'src/app/character-query.graphql'
+generates:
+  src/app/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+config:
+  scalars:
+    DateTime: string
+  useTypeImports: true
+  namingConvention:
+    typeNames: original
+    enumValues: keep
+    transformUnderscore: true
+  nonNullableByDefault: true
