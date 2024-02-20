@@ -13,8 +13,8 @@
     </div>
   </div>
 
-  <div class="pagination flex flex-row justify-between mt-2 py-2 text-lg">
-    <button (click)="prevPage()">Previous</button>
+  <div class="pagination flex flex-row justify-between mt-2 py-2 text-lg bg-slate-300">
+    <button class="ml-4" (click)="prevPage()"> < Previous</button>
     <span>Page {{currentPage}} of {{maxPages}} </span>
-    <button (click)="nextPage()">Next</button>
+    <button class="mr-4" (click)="nextPage()">Next > </button>
   </div>

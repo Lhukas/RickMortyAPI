@@ -9,8 +9,8 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
   characters: any[] = [];
-  currentPage : Number = 1;
-  maxPages : Number = 0
+  currentPage : number = 1;
+  maxPages : number = 0
 
   constructor(private characterService: CharacterService,
               private router : Router) {}
@@ -33,13 +33,18 @@ export class HomeComponent {
   }
 
   nextPage() {
-    this.currentPage = 2;
-    this.refreshList(this.currentPage)
+    if(this.currentPage < this.maxPages) {
+      this.currentPage = this.currentPage + 1;
+      this.refreshList(this.currentPage)
+    }
   }
 
   prevPage() {
-    this.currentPage = 3;
-    this.refreshList(this.currentPage)
+    if(this.currentPage > 1){
+      this.currentPage = this.currentPage - 1;
+      this.refreshList(this.currentPage)
+    }
+
   }
 
 
