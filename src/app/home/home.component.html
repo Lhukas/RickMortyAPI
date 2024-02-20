@@ -1,19 +1,20 @@
-<div *ngFor="let character of characters" class="card-container">
 
-<article class="profile">
-  <div class="profile-image">
-    <img src="{{character.image}}" alt="">
+<div class="h-full w-full bg-slate-200 text-center text-black ">
+  <h1 class="text-center text-4xl mb-4 pb-2">Personnages de Rick et Morty</h1>
+  <div class="mx-auto w-11/12">
+    <div class="grid grid-cols-5 gap-4 ">
+      <div *ngFor="let character of characters" class="container mx-auto grid border-2 rounded-md border-black bg-slate-300 p-1" style="cursor: pointer" (click)="decouvrirPersonnage(character.id)">
+        <h2>{{character.name}}</h2>
+        <img alt="" src="{{character.image}}">
+        <div class="profile-actions">
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div>
-  <h2 class="profile-username">{{character.name}}</h2>
-  <div class="profile-actions">
-    <button (click)="decouvrirPersonnage(character.id)">Save</button>
 
+  <div class="pagination flex flex-row justify-between mt-2 py-2 text-lg">
+    <button>Previous</button>
+    <span>Page  of </span>
+    <button>Next</button>
   </div>
-  </div>
-
-</article>
-
-
-</div>
-
