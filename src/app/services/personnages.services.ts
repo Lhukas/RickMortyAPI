@@ -36,9 +36,22 @@ export class CharacterService {
       query Character {
         character(id: "${id}") {
             image
-            created
+        created
+        name
+        status
+        species
+        type
+        gender
+        location {
             name
+            type
+            dimension
         }
+        origin {
+            name
+            dimension
+        }
+    }
       }
     `;
 
