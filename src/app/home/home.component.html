@@ -1,6 +1,19 @@
+<div *ngFor="let character of characters" class="card-container">
 
-<div *ngFor="let character of characters">
-  <h2>{{character.name}}</h2>
-  <img src="{{character.image}}" alt="">
+<article class="profile">
+  <div class="profile-image">
+    <img src="{{character.image}}" alt="">
+  </div>
+  <div>
+  <h2 class="profile-username">{{character.name}}</h2>
+  <div class="profile-actions">
+    <button (click)="decouvrirPersonnage(character.id)">Save</button>
+
+  </div>
+  </div>
+
+</article>
+
 
 </div>
+

@@ -21,6 +21,18 @@ export class HomeComponent {
       console.error('Erreur lors de la récupération des personnages', error);
     }
 
+
   }
 
+
+  async decouvrirPersonnage(id: string) {
+    try {
+      await this.characterService.getCharactersByID(id).subscribe((response: any) => {
+        console.log(response.data);
+      });
+    } catch (error) {
+      console.error('Erreur lors de la récupération du personnage', error);
+    }
+
+  }
 }

@@ -1,0 +1,20 @@
+.card-container{
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: 1fr 1fr;
+}
+
+.profile{
+  display: grid;
+  width: 700px;
+  grid-auto-rows: 1fr;
+  gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 20px;
+  background: red;
+}
+
+.profile img{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}

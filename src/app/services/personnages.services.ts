@@ -25,4 +25,19 @@ export class CharacterService {
 
     return this.http.post(this.apiUrl, { query });
   }
+
+
+  getCharactersByID(id: string) {
+    const query = `
+      query Character {
+        character(id: "${id}") {
+            image
+            created
+            name
+        }
+      }
+    `;
+
+    return this.http.post(this.apiUrl, { query });
+  }
 }
