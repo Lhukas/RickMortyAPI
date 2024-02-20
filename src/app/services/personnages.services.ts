@@ -12,10 +12,15 @@ export class CharacterService {
   constructor(private http: HttpClient,
              ) {}
 
-  getCharacters() {
+  getCharacters(numberPage: Number) {
     const query = `
-      query {
-        characters(page: 3) {
+      query Characters {
+        characters(page: ${numberPage}) {
+          info {
+          pages
+          next
+          prev
+          }
           results {
             id
             name
@@ -35,7 +40,7 @@ export class CharacterService {
     const query = `
       query Character {
         character(id: "${id}") {
-            image
+         image
         created
         name
         status

@@ -9,14 +9,17 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
   characters: any[] = [];
+  currentPage : Number = 1;
+  maxPages : Number = 0
 
   constructor(private characterService: CharacterService,
               private router : Router) {}
 
   async ngOnInit() {
     try {
-      await this.characterService.getCharacters().subscribe((response: any) => {
+      await this.characterService.getCharacters(this.currentPage).subscribe((response: any) => {
         this.characters = response.data.characters.results;
+        this.maxPages = response.data.characters.info.pages;
       });
     }catch (error) {
       console.error('Erreur lors de la récupération des personnages', error);
@@ -27,5 +30,26 @@ export class HomeComponent {
  decouvrirPersonnage(id: string) {
    this.router.navigateByUrl('personnage/'+id)
 
+  }
+
+  nextPage() {
+    this.currentPage = 2;
+    this.refreshList(this.currentPage)
+  }
+
+  prevPage() {
+    this.currentPage = 3;
+    this.refreshList(this.currentPage)
+  }
+
+
+  async refreshList(numberPage:Number) {
+    try {
+      await this.characterService.getCharacters(this.currentPage).subscribe((response: any) => {
+        this.characters = response.data.characters.results;
+      });
+    } catch (error) {
+      console.error('Erreur lors de la récupération des personnages', error);
+    }
   }
 }

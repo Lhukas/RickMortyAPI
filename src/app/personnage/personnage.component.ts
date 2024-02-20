@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {CharacterService} from "../services/personnages.services";
 
 @Component({
@@ -9,11 +9,13 @@ import {CharacterService} from "../services/personnages.services";
 })
 export class PersonnageComponent {
    id !: String;
+  character: any;
 
 
   constructor(
     private route: ActivatedRoute,
     private characterService: CharacterService,
+    private router : Router,
 
   ) {}
 
@@ -23,11 +25,16 @@ export class PersonnageComponent {
     try {
       // @ts-ignore
       await this.characterService.getCharactersByID(this.id).subscribe((response: any) => {
+        this.character = response.data.character;
         console.log(response.data);
+        console.log(this.character.name);
       });
     } catch (error) {
       console.error('Erreur lors de la récupération du personnage', error);
     }
   }
 
+  retourHome() {
+    this.router.navigateByUrl('')
+  }
 }
