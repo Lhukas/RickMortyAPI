@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ export class CharacterService {
 
   private apiUrl = 'https://rickandmortyapi.com/graphql';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+             ) {}
 
   getCharacters() {
     const query = `
@@ -28,6 +30,8 @@ export class CharacterService {
 
 
   getCharactersByID(id: string) {
+
+
     const query = `
       query Character {
         character(id: "${id}") {

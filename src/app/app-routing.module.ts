@@ -6,9 +6,13 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 
 import {InMemoryCache} from "@apollo/client/core";
+import {PersonnageComponent} from "./personnage/personnage.component";
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'personnage/:id', component : PersonnageComponent },
+
+
 
 ];
 

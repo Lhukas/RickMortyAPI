@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {CharacterService} from "../services/personnages.services";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -9,30 +10,22 @@ import {CharacterService} from "../services/personnages.services";
 export class HomeComponent {
   characters: any[] = [];
 
-  constructor(private characterService: CharacterService) {}
+  constructor(private characterService: CharacterService,
+              private router : Router) {}
 
   async ngOnInit() {
     try {
       await this.characterService.getCharacters().subscribe((response: any) => {
         this.characters = response.data.characters.results;
-        console.log(this.characters)
       });
     }catch (error) {
       console.error('Erreur lors de la récupération des personnages', error);
     }
-
-
   }
 
 
-  async decouvrirPersonnage(id: string) {
-    try {
-      await this.characterService.getCharactersByID(id).subscribe((response: any) => {
-        console.log(response.data);
-      });
-    } catch (error) {
-      console.error('Erreur lors de la récupération du personnage', error);
-    }
+ decouvrirPersonnage(id: string) {
+   this.router.navigateByUrl('personnage/'+id)
 
   }
 }
