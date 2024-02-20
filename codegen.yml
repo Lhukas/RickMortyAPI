@@ -1,5 +1,5 @@
 schema: https://rickandmortyapi.com/graphql
-documents: 'src/app/character-query.graphql'
+documents: 'src/app/*.graphql'
 generates:
   src/app/generated/graphql.ts:
     plugins:
@@ -10,7 +10,8 @@ config:
     DateTime: string
   useTypeImports: true
   namingConvention:
-    typeNames: original
-    enumValues: keep
+    typeNames: change-case#pascalCase
+    enumValues: change-case#pascalCase
     transformUnderscore: true
   nonNullableByDefault: true
+
